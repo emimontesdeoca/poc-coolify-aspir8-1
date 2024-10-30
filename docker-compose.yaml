@@ -1,19 +1,4 @@
 services:
-  keycloak:
-    container_name: "keycloak"
-    image: "quay.io/keycloak/keycloak:25.0"
-    environment:
-      KEYCLOAK_ADMIN: "admin"
-      KEYCLOAK_ADMIN_PASSWORD: "4khMOrpbNQ2ihUaszHp2je"
-    volumes:
-    - "aspirate-apphost-172133ca8f-keycloak-data:/opt/keycloak/data"
-    ports:
-    - target: 8080
-      published: 8090
-    command:
-    - "start"
-    - "--import-realm"
-    restart: unless-stopped
   webfrontend:
     container_name: "webfrontend"
     build:
@@ -30,6 +15,21 @@ services:
       published: 10000
     - target: 8443
       published: 10001
+    restart: unless-stopped
+  keycloak:
+    container_name: "keycloak"
+    image: "quay.io/keycloak/keycloak:25.0"
+    environment:
+      KEYCLOAK_ADMIN: "admin"
+      KEYCLOAK_ADMIN_PASSWORD: "4khMOrpbNQ2ihUaszHp2je"
+    volumes:
+    - "aspirate-apphost-172133ca8f-keycloak-data:/opt/keycloak/data"
+    ports:
+    - target: 8080
+      published: 8090
+    command:
+    - "start"
+    - "--import-realm"
     restart: unless-stopped
 volumes:
   aspirate-apphost-172133ca8f-keycloak-data: {}
