@@ -16,14 +16,15 @@ services:
     restart: unless-stopped
   webfrontend:
     container_name: "webfrontend"
-    image: "webfrontend:latest"
+    build:
+      dockerfile: "Aspirate.Web/Dockerfile"
     environment:
       OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EXCEPTION_LOG_ATTRIBUTES: "true"
       OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EVENT_LOG_ATTRIBUTES: "true"
       OTEL_DOTNET_EXPERIMENTAL_OTLP_RETRY: "in_memory"
       ASPNETCORE_FORWARDEDHEADERS_ENABLED: "true"
       HTTP_PORTS: "8080"
-      services__keycloak__http__0: "http://keycloak:8080"
+      services__keycloak__http__0: "http://keycloak:8090"
     ports:
     - target: 8080
       published: 10000

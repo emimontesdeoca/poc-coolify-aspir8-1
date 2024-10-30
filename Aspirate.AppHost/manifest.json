@@ -31,6 +31,7 @@
           "scheme": "http",
           "protocol": "tcp",
           "transport": "http",
+          "port": 8090,
           "targetPort": 8080
         }
       }

@@ -1,15 +1,17 @@
 {
   "projectPath": ".",
+  "inputPath": "aspirate-output",
   "outputPath": "aspirate-output",
   "containerImageTags": [
     "latest"
   ],
   "composeBuilds": [
-    "..\\Aspirate.Web\\Dockerfile"
+    "C:\\Development\\Personal\\poc-coolify-aspir8-1\\Aspirate.Web\\Dockerfile"
   ],
   "containerBuilder": "docker",
   "outputFormat": "compose",
   "privateRegistryEmail": "aspir8@aka.ms",
+  "includeDashboard": false,
   "secrets": {
     "salt": "bCfJpsQZXwLPJFwL",
     "hash": "PtKSyZT5\u002BGKwrqN8m8MY35EtLjT13pNGzHt5mHOL0pU=",
