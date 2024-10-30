@@ -12,9 +12,9 @@ services:
       services__keycloak__http__0: "http://keycloak:8090"
     ports:
     - target: 8080
-      published: 10000
+      published: 8080
     - target: 8443
-      published: 10001
+      published: 8443
     restart: unless-stopped
   keycloak:
     container_name: "keycloak"
