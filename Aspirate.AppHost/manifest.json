@@ -17,7 +17,7 @@
       ],
       "volumes": [
         {
-          "name": "aspirate.apphost-960097afc4-keycloak-data",
+          "name": "aspirate.apphost-172133ca8f-keycloak-data",
           "target": "/opt/keycloak/data",
           "readOnly": false
         }
@@ -37,7 +37,7 @@
     },
     "webfrontend": {
       "type": "project.v0",
-      "path": "../Keycloak.Web/Aspirate.Web.csproj",
+      "path": "../Aspirate.Web/Aspirate.Web.csproj",
       "env": {
         "OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EXCEPTION_LOG_ATTRIBUTES": "true",
         "OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EVENT_LOG_ATTRIBUTES": "true",

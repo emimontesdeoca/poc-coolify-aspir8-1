@@ -1,0 +1,34 @@
+services:
+  keycloak:
+    container_name: "keycloak"
+    image: "quay.io/keycloak/keycloak:25.0"
+    environment:
+      KEYCLOAK_ADMIN: "admin"
+      KEYCLOAK_ADMIN_PASSWORD: "4khMOrpbNQ2ihUaszHp2je"
+    volumes:
+    - "aspirate-apphost-172133ca8f-keycloak-data:/opt/keycloak/data"
+    ports:
+    - target: 8080
+      published: 8080
+    command:
+    - "start"
+    - "--import-realm"
+    restart: unless-stopped
+  webfrontend:
+    container_name: "webfrontend"
+    image: "webfrontend:latest"
+    environment:
+      OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EXCEPTION_LOG_ATTRIBUTES: "true"
+      OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EVENT_LOG_ATTRIBUTES: "true"
+      OTEL_DOTNET_EXPERIMENTAL_OTLP_RETRY: "in_memory"
+      ASPNETCORE_FORWARDEDHEADERS_ENABLED: "true"
+      HTTP_PORTS: "8080"
+      services__keycloak__http__0: "http://keycloak:8080"
+    ports:
+    - target: 8080
+      published: 10000
+    - target: 8443
+      published: 10001
+    restart: unless-stopped
+volumes:
+  aspirate-apphost-172133ca8f-keycloak-data: {}
